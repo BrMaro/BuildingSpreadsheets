@@ -26,3 +26,5 @@ window.onload = ()=>{
   
   })
 };
+
+const sum = (nums) => nums.reduce((acc,el)=>acc+el);
