@@ -18,6 +18,8 @@ const sum = (nums) => nums.reduce((acc,el)=>acc+el);
 
 const isEven = (num) => num%2==0 ? true : false;
 
+const even = (nums) => nums.filter((num)=>isEven(num));
+
 const median = (nums) => {
   const sorted = nums.slice().sort((a,b)=>a-b);
   const length = sorted.length;
@@ -31,6 +33,31 @@ const spreadsheetFunctions = {
   sum,
   average,
   median,
+
+  even: (nums)=> nums.filter(isEven),
+  firsttwo: (nums)=>nums.slice(0,2),
+  lasttwo: (nums)=>nums.slice(-2),
+  has2: (nums)=>nums.includes(2),
+  increment: (nums)=>nums.slice().map((num)=>num+1),
+  someeven: (nums)=>nums.some((num)=>isEven(num)),
+  everyeven:(nums)=>nums.every((num)=>isEven(num)),
+  // random:(nums)=>Math.random() * (Math.max(firsttwo(nums)) - Math.min(firsttwo(nums))) + Math.min(firsttwo(nums))
+  random: (nums) => {
+      const min = Math.min(nums[0], nums[1]);
+      const max = Math.max(nums[0], nums[1]);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+  },
+  range: (nums) => range(...nums),
+  nodupes: (nums)=>{
+    let noDuplicates = [];
+    for(let i of nums){
+      if(!noDuplicates.includes(i)){
+        noDuplicates.push(i);
+      }  
+    }
+    return noDuplicates;
+  },
+  "":(nums)=>nums
 };
 
 const applyFunction = str => {
